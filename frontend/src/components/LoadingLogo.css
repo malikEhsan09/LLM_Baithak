@@ -137,11 +137,28 @@
   }
 }
 
-/* Optional: Add glow effect */
+/* Glow effects - simple theme (default) */
 .center-hub {
-  filter: drop-shadow(0 0 4px rgba(233, 30, 99, 0.5));
+  filter: drop-shadow(0 0 4px rgba(139, 92, 246, 0.5));
 }
 
 .node {
-  filter: drop-shadow(0 0 2px rgba(240, 98, 146, 0.4));
+  filter: drop-shadow(0 0 2px rgba(167, 139, 250, 0.4));
+}
+
+.connection {
+  filter: drop-shadow(0 0 2px rgba(139, 92, 246, 0.4));
+}
+
+/* Retro theme glow effects */
+[data-theme="retro"] .center-hub {
+  filter: drop-shadow(0 0 4px rgba(0, 255, 0, 0.8));
+}
+
+[data-theme="retro"] .node {
+  filter: drop-shadow(0 0 2px rgba(0, 255, 0, 0.6));
+}
+
+[data-theme="retro"] .connection {
+  filter: drop-shadow(0 0 2px rgba(0, 255, 0, 0.4));
 }

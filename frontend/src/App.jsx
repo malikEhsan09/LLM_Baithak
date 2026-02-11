@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar';
 import ChatInterface from './components/ChatInterface';
 import ConfirmationDialog from './components/ConfirmationDialog';
+import LandingPage from './components/LandingPage';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { api } from './api';
 import './App.css';
 
-function App() {
+function AppContent() {
+  const [showLanding, setShowLanding] = useState(true);
   const [conversations, setConversations] = useState([]);
   const [currentConversationId, setCurrentConversationId] = useState(null);
   const [currentConversation, setCurrentConversation] = useState(null);
@@ -13,10 +16,23 @@ function App() {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [conversationToDelete, setConversationToDelete] = useState(null);
 
-  // Load conversations on mount
+  const handleGetStarted = async () => {
+    // If user clicks Get Started, enter the main app
+    setShowLanding(false);
+    // Load conversations when entering the app
+    await loadConversations();
+    // Create a new conversation if none exists
+    if (conversations.length === 0) {
+      await handleNewConversation();
+    }
+  };
+
+  // Load conversations on mount (only when not on landing page)
   useEffect(() => {
-    loadConversations();
-  }, []);
+    if (!showLanding) {
+      loadConversations();
+    }
+  }, [showLanding]);
 
   // Load conversation details when selected
   useEffect(() => {
@@ -71,10 +87,10 @@ function App() {
 
     try {
       await api.deleteConversation(conversationToDelete);
-      
+
       // Remove from conversations list
       setConversations(conversations.filter(conv => conv.id !== conversationToDelete));
-      
+
       // If deleted conversation was current, clear it
       if (currentConversationId === conversationToDelete) {
         setCurrentConversationId(null);
@@ -240,30 +256,44 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <Sidebar
-        conversations={conversations}
-        currentConversationId={currentConversationId}
-        onSelectConversation={handleSelectConversation}
-        onNewConversation={handleNewConversation}
-        onDeleteConversation={handleDeleteConversation}
-        onUpdateTitle={handleUpdateTitle}
-      />
-      <ChatInterface
-        conversation={currentConversation}
-        onSendMessage={handleSendMessage}
-        isLoading={isLoading}
-      />
-      <ConfirmationDialog
-        isOpen={deleteDialogOpen}
-        onClose={cancelDeleteConversation}
-        onConfirm={confirmDeleteConversation}
-        title="Delete Conversation"
-        message="Are you sure you want to delete this conversation? This action cannot be undone and all messages will be permanently deleted."
-        confirmText="Delete"
-        cancelText="Cancel"
-      />
-    </div>
+    <>
+      {showLanding ? (
+        <LandingPage onGetStarted={handleGetStarted} />
+      ) : (
+        <div className="app">
+          <Sidebar
+            conversations={conversations}
+            currentConversationId={currentConversationId}
+            onSelectConversation={handleSelectConversation}
+            onNewConversation={handleNewConversation}
+            onDeleteConversation={handleDeleteConversation}
+            onUpdateTitle={handleUpdateTitle}
+          />
+          <ChatInterface
+            conversation={currentConversation}
+            onSendMessage={handleSendMessage}
+            isLoading={isLoading}
+          />
+          <ConfirmationDialog
+            isOpen={deleteDialogOpen}
+            onClose={cancelDeleteConversation}
+            onConfirm={confirmDeleteConversation}
+            title="Delete Conversation"
+            message="Are you sure you want to delete this conversation? This action cannot be undone and all messages will be permanently deleted."
+            confirmText="Delete"
+            cancelText="Cancel"
+          />
+        </div>
+      )}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

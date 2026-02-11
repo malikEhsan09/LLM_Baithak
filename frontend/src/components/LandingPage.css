@@ -1,0 +1,148 @@
+.landing-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  scroll-behavior: smooth;
+}
+
+/* Ensure smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Retro scanline effect overlay */
+.landing-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* CRT flicker effect */
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  5% { opacity: 0.95; }
+  10% { opacity: 0.9; }
+  15% { opacity: 0.95; }
+  20% { opacity: 0.99; }
+  25% { opacity: 0.95; }
+  30% { opacity: 0.9; }
+  35% { opacity: 0.96; }
+  40% { opacity: 0.98; }
+  45% { opacity: 0.95; }
+  50% { opacity: 0.99; }
+  55% { opacity: 0.93; }
+  60% { opacity: 0.9; }
+  65% { opacity: 0.96; }
+  70% { opacity: 0.98; }
+  75% { opacity: 0.95; }
+  80% { opacity: 0.99; }
+  85% { opacity: 0.93; }
+  90% { opacity: 0.9; }
+  95% { opacity: 0.96; }
+  100% { opacity: 0.98; }
+}
+
+.landing-page::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9998;
+  animation: flicker 0.15s infinite;
+}
+
+/* Section spacing */
+section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Retro section headings */
+.retro-section-title {
+  font-size: 32px;
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  border-bottom: 3px solid #00ff00;
+  padding-bottom: 15px;
+}
+
+.retro-section-subtitle {
+  font-size: 16px;
+  color: #00aa00;
+  text-align: center;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Retro box style */
+.retro-box {
+  border: 3px solid #00ff00;
+  background: #001100;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3), inset 0 0 20px rgba(0, 255, 0, 0.1);
+  padding: 30px;
+  position: relative;
+}
+
+.retro-box::before {
+  content: '▓';
+  position: absolute;
+  top: -3px;
+  left: 10px;
+  background: #0a0a0a;
+  color: #00ff00;
+  font-size: 14px;
+  padding: 0 5px;
+}
+
+.retro-box::after {
+  content: '▓';
+  position: absolute;
+  top: -3px;
+  right: 10px;
+  background: #0a0a0a;
+  color: #00ff00;
+  font-size: 14px;
+  padding: 0 5px;
+}
+
+/* Scrollbar styling */
+.landing-page::-webkit-scrollbar {
+  width: 12px;
+}
+
+.landing-page::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.landing-page::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border: 2px solid #0a0a0a;
+}
+
+.landing-page::-webkit-scrollbar-thumb:hover {
+  background: #00ffff;
+}

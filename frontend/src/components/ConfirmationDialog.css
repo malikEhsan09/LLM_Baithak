@@ -1,3 +1,4 @@
+/* Simple theme */
 .confirmation-dialog-overlay {
   position: fixed;
   top: 0;
@@ -110,7 +111,73 @@
   transform: translateY(0);
 }
 
-.confirmation-dialog-btn-confirm:active {
-  transform: translateY(0);
+/* Retro theme */
+[data-theme="retro"] .confirmation-dialog-overlay {
+  background: rgba(0, 0, 0, 0.8);
 }
 
+[data-theme="retro"] .confirmation-dialog {
+  background: #0a0a0a;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  border-radius: 0;
+}
+
+[data-theme="retro"] .confirmation-dialog-header {
+  border-bottom: 2px solid #00ff00;
+}
+
+[data-theme="retro"] .confirmation-dialog-title {
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+[data-theme="retro"] .confirmation-dialog-message {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .confirmation-dialog-footer {
+  border-top: 2px solid #00ff00;
+}
+
+[data-theme="retro"] .confirmation-dialog-btn {
+  border: 2px solid;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+}
+
+[data-theme="retro"] .confirmation-dialog-btn-cancel {
+  background: #0a0a0a;
+  color: #00aa00;
+  border-color: #00aa00;
+}
+
+[data-theme="retro"] .confirmation-dialog-btn-cancel:hover {
+  background: #001100;
+  color: #00ff00;
+  border-color: #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+[data-theme="retro"] .confirmation-dialog-btn-confirm {
+  background: #0a0a0a;
+  color: #ff0000;
+  border-color: #ff0000;
+}
+
+[data-theme="retro"] .confirmation-dialog-btn-confirm:hover {
+  background: #ff0000;
+  color: #0a0a0a;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+[data-theme="retro"] .confirmation-dialog-btn:active {
+  transform: scale(0.98);
+}

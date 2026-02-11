@@ -1,3 +1,4 @@
+/* Simple theme */
 .stage3 {
   background: #f0fff0;
   border-color: #c8e6c8;
@@ -22,4 +23,32 @@
   color: #333;
   line-height: 1.7;
   font-size: 15px;
+}
+
+/* Retro theme */
+[data-theme="retro"] .stage3 {
+  background: #0a0a0a;
+  border-color: #00ff00;
+}
+
+[data-theme="retro"] .final-response {
+  background: #001100;
+  border-radius: 0;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+[data-theme="retro"] .chairman-label {
+  color: #ffff00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #00aa00;
+}
+
+[data-theme="retro"] .final-text {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
 }

@@ -1,5 +1,5 @@
 .sidebar {
-  width: 260px;
+  width: 280px;
   background: #f8f8f8;
   border-right: 1px solid #e0e0e0;
   display: flex;
@@ -31,11 +31,16 @@
   color: #333;
 }
 
+.sidebar-buttons {
+  display: flex;
+  gap: 8px;
+}
+
 .new-conversation-btn {
-  width: 100%;
+  flex: 1;
   padding: 10px;
-  background: #e91e63;
-  border: 1px solid #e91e63;
+  background: #8b5cf6;
+  border: 1px solid #8b5cf6;
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
@@ -45,8 +50,26 @@
 }
 
 .new-conversation-btn:hover {
-  background: #c2185b;
-  border-color: #c2185b;
+  background: #7c3aed;
+  border-color: #7c3aed;
+}
+
+.theme-toggle-btn {
+  padding: 10px 12px;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-btn:hover {
+  background: #e0e0e0;
+  color: #333;
 }
 
 .conversation-list {
@@ -78,13 +101,14 @@
   background: #f0f0f0;
 }
 
-.conversation-item:hover .delete-conversation-btn {
+.conversation-item:hover .delete-conversation-btn,
+.conversation-item:hover .edit-title-btn {
   opacity: 1;
 }
 
 .conversation-item.active {
-  background: #fce4ec;
-  border: 1px solid #e91e63;
+  background: #ede9fe;
+  border: 1px solid #8b5cf6;
 }
 
 .conversation-content {
@@ -106,7 +130,8 @@
   font-size: 12px;
 }
 
-.delete-conversation-btn {
+.delete-conversation-btn,
+.edit-title-btn {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -126,11 +151,18 @@
   color: #d32f2f;
 }
 
-.delete-conversation-btn:active {
+.edit-title-btn:hover {
+  background: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+}
+
+.delete-conversation-btn:active,
+.edit-title-btn:active {
   transform: scale(0.95);
 }
 
-.delete-conversation-btn svg {
+.delete-conversation-btn svg,
+.edit-title-btn svg {
   display: block;
 }
 
@@ -140,39 +172,11 @@
   gap: 6px;
 }
 
-.edit-title-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #999;
-  border-radius: 4px;
-  transition: all 0.2s;
-  opacity: 0;
-  flex-shrink: 0;
-}
-
-.conversation-item:hover .edit-title-btn {
-  opacity: 1;
-}
-
-.edit-title-btn:hover {
-  background: rgba(233, 30, 99, 0.1);
-  color: #e91e63;
-}
-
-.edit-title-btn:active {
-  transform: scale(0.95);
-}
-
 .conversation-title-input {
   width: 100%;
   padding: 6px 8px;
   font-size: 14px;
-  border: 1px solid #e91e63;
+  border: 1px solid #8b5cf6;
   border-radius: 4px;
   outline: none;
   background: #fff;
@@ -181,5 +185,154 @@
 }
 
 .conversation-title-input:focus {
-  box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.2);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+/* ============================================
+   RETRO THEME OVERRIDES
+   ============================================ */
+[data-theme="retro"] .sidebar {
+  background: #0a0a0a;
+  border-right: 2px solid #00ff00;
+}
+
+[data-theme="retro"] .sidebar-header {
+  border-bottom: 2px solid #00ff00;
+}
+
+[data-theme="retro"] .sidebar-header h1 {
+  color: #00ff00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+[data-theme="retro"] .new-conversation-btn {
+  background: #0a0a0a;
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  transition: all 0.1s;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+}
+
+[data-theme="retro"] .new-conversation-btn:hover {
+  background: #00ff00;
+  color: #0a0a0a;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+[data-theme="retro"] .new-conversation-btn:active {
+  background: #00cc00;
+}
+
+[data-theme="retro"] .theme-toggle-btn {
+  background: #0a0a0a;
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  transition: all 0.1s;
+  border-radius: 0;
+}
+
+[data-theme="retro"] .theme-toggle-btn:hover {
+  background: #00ffff;
+  color: #0a0a0a;
+  box-shadow: 0 0 10px #00ffff;
+}
+
+[data-theme="retro"] .theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+[data-theme="retro"] .conversation-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+[data-theme="retro"] .conversation-list::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+[data-theme="retro"] .conversation-list::-webkit-scrollbar-thumb {
+  background: #00ff00;
+}
+
+[data-theme="retro"] .conversation-list::-webkit-scrollbar-thumb:hover {
+  background: #00cc00;
+}
+
+[data-theme="retro"] .no-conversations {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .conversation-item {
+  border: 1px solid #1a1a1a;
+  background: #0a0a0a;
+  border-radius: 0;
+  transition: all 0.1s;
+}
+
+[data-theme="retro"] .conversation-item:hover {
+  background: #1a1a1a;
+  border-color: #00ff00;
+}
+
+[data-theme="retro"] .conversation-item.active {
+  background: #003300;
+  border: 2px solid #00ff00;
+  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+[data-theme="retro"] .conversation-title {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .conversation-meta {
+  color: #00aa00;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .delete-conversation-btn,
+[data-theme="retro"] .edit-title-btn {
+  border: 1px solid;
+}
+
+[data-theme="retro"] .delete-conversation-btn {
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
+[data-theme="retro"] .edit-title-btn {
+  border-color: #00ff00;
+  color: #00ff00;
+}
+
+[data-theme="retro"] .delete-conversation-btn:hover {
+  background: #ff0000;
+  color: #0a0a0a;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+[data-theme="retro"] .edit-title-btn:hover {
+  background: #00ff00;
+  color: #0a0a0a;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+[data-theme="retro"] .conversation-title-input {
+  border: 2px solid #00ff00;
+  background: #0a0a0a;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  border-radius: 0;
+}
+
+[data-theme="retro"] .conversation-title-input:focus {
+  box-shadow: 0 0 10px #00ff00;
+  border-color: #00ffff;
 }

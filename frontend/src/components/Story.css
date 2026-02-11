@@ -1,0 +1,285 @@
+.story-section {
+  position: relative;
+  z-index: 1;
+}
+
+.story-content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* Story Intro */
+.story-intro {
+  padding: 40px;
+  text-align: center;
+}
+
+.intro-title {
+  font-size: 18px;
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0 0 25px 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.intro-text {
+  font-size: 15px;
+  color: #00aa00;
+  line-height: 1.8;
+  font-family: 'Courier New', monospace;
+  margin: 0 0 15px 0;
+}
+
+.intro-text:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px 0;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 30px;
+  position: relative;
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 60px;
+}
+
+.marker-dot {
+  width: 20px;
+  height: 20px;
+  background: #00ff00;
+  border: 3px solid #0a0a0a;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00ff00, 0 0 30px rgba(0, 255, 0, 0.5);
+  z-index: 2;
+  animation: dotPulse 2s infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 15px #00ff00, 0 0 30px rgba(0, 255, 0, 0.5); }
+  50% { box-shadow: 0 0 25px #00ff00, 0 0 50px rgba(0, 255, 0, 0.8); }
+}
+
+.marker-line {
+  flex: 1;
+  width: 3px;
+  background: linear-gradient(180deg, #00ff00, #00aa00);
+  margin-top: 5px;
+  min-height: 80px;
+}
+
+.timeline-item:last-child .marker-line {
+  display: none;
+}
+
+.timeline-content {
+  flex: 1;
+  padding: 30px;
+  transition: all 0.3s;
+}
+
+.timeline-content:hover {
+  transform: translateX(10px);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.4);
+}
+
+.timeline-year {
+  font-size: 32px;
+  color: #00ffff;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 15px #00ffff;
+  margin-bottom: 10px;
+}
+
+.timeline-title {
+  font-size: 18px;
+  color: #00ff00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 15px 0;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.timeline-description {
+  font-size: 14px;
+  color: #00aa00;
+  line-height: 1.6;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+}
+
+/* Mission Box */
+.mission-box {
+  padding: 40px;
+  text-align: center;
+}
+
+.mission-title {
+  font-size: 18px;
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0 0 30px 0;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.mission-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.mission-text {
+  font-size: 15px;
+  color: #00aa00;
+  line-height: 1.8;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+}
+
+.mission-quote {
+  margin-top: 15px;
+  padding: 30px;
+  background: rgba(0, 255, 255, 0.05);
+  border: 2px solid #00aaaa;
+  position: relative;
+}
+
+.quote-mark {
+  font-size: 48px;
+  color: #00ffff;
+  line-height: 1;
+}
+
+.quote-mark:first-child {
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.quote-mark:last-child {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.mission-quote::before {
+  content: '"';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 80px;
+  color: rgba(0, 255, 255, 0.1);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.stat-card {
+  padding: 35px 25px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+}
+
+.stat-value {
+  font-size: 48px;
+  color: #00ffff;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 20px #00ffff;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #00aa00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline-item {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .timeline-marker {
+    width: 100%;
+    flex-direction: row;
+    gap: 15px;
+    height: 40px;
+  }
+
+  .marker-line {
+    width: 3px;
+    min-height: 0;
+    flex: 0;
+  }
+
+  .timeline-year {
+    font-size: 24px;
+  }
+
+  .timeline-title {
+    font-size: 16px;
+  }
+
+  .timeline-content {
+    padding: 25px 20px;
+  }
+
+  .story-intro,
+  .mission-box {
+    padding: 30px 20px;
+  }
+
+  .intro-text,
+  .mission-text {
+    font-size: 14px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-value {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

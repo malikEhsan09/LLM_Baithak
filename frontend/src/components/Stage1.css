@@ -34,13 +34,13 @@
 .tab:hover {
   background: #f0f0f0;
   color: #333;
-  border-color: #e91e63;
+  border-color: #8b5cf6;
 }
 
 .tab.active {
   background: #ffffff;
-  color: #e91e63;
-  border-color: #e91e63;
+  color: #8b5cf6;
+  border-color: #8b5cf6;
   border-bottom-color: #ffffff;
   font-weight: 600;
 }
@@ -62,4 +62,70 @@
 .response-text {
   color: #333;
   line-height: 1.6;
+}
+
+/* ============================================
+   RETRO THEME OVERRIDES
+   ============================================ */
+[data-theme="retro"] .stage {
+  background: #0a0a0a;
+  border-radius: 0;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+[data-theme="retro"] .stage-title {
+  color: #00ffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+  border-bottom: 2px solid #00ff00;
+  padding-bottom: 8px;
+}
+
+[data-theme="retro"] .tabs {
+  gap: 4px;
+}
+
+[data-theme="retro"] .tab {
+  background: #0a0a0a;
+  border: 2px solid #00aa00;
+  color: #00aa00;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+}
+
+[data-theme="retro"] .tab:hover {
+  background: #001100;
+  color: #00ff00;
+  border-color: #00ff00;
+}
+
+[data-theme="retro"] .tab.active {
+  background: #003300;
+  color: #00ff00;
+  border-color: #00ff00;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+[data-theme="retro"] .tab-content {
+  background: #001100;
+  border: 2px solid #00aa00;
+  border-radius: 0;
+}
+
+[data-theme="retro"] .model-name {
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .response-text {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
 }

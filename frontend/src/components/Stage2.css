@@ -1,3 +1,4 @@
+/* Default simple theme styles */
 .stage2 {
   background: #fafafa;
 }
@@ -21,11 +22,11 @@
 }
 
 .aggregate-rankings {
-  background: #fce4ec;
+  background: #f5f3ff;
   padding: 16px;
   border-radius: 8px;
   margin-bottom: 20px;
-  border: 2px solid #f8bbd0;
+  border: 1px solid #ddd6fe;
 }
 
 .aggregate-rankings-header {
@@ -37,7 +38,7 @@
 
 .aggregate-rankings h4 {
   margin: 0;
-  color: #c2185b;
+  color: #8b5cf6;
   font-size: 15px;
 }
 
@@ -82,11 +83,11 @@
   padding: 10px;
   background: #ffffff;
   border-radius: 6px;
-  border: 1px solid #f8bbd0;
+  border: 1px solid #ddd6fe;
 }
 
 .rank-position {
-  color: #c2185b;
+  color: #8b5cf6;
   font-weight: 700;
   font-size: 16px;
   min-width: 35px;
@@ -127,13 +128,13 @@
 .stage2 .tab:hover {
   background: #f0f0f0;
   color: #333;
-  border-color: #e91e63;
+  border-color: #8b5cf6;
 }
 
 .stage2 .tab.active {
   background: #ffffff;
-  color: #e91e63;
-  border-color: #e91e63;
+  color: #8b5cf6;
+  border-color: #8b5cf6;
   border-bottom-color: #ffffff;
   font-weight: 600;
 }
@@ -162,11 +163,11 @@
 .parsed-ranking {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 2px solid #e0e0e0;
+  border-top: 1px solid #e0e0e0;
 }
 
 .parsed-ranking strong {
-  color: #c2185b;
+  color: #8b5cf6;
   font-size: 13px;
 }
 
@@ -185,4 +186,142 @@
 .rank-count {
   color: #999;
   font-size: 12px;
+}
+
+/* ============================================
+   RETRO THEME OVERRIDES
+   ============================================ */
+[data-theme="retro"] .stage2 {
+  background: #0a0a0a;
+}
+
+[data-theme="retro"] .stage2 h4 {
+  color: #00ffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .stage-description {
+  color: #00aa00;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .aggregate-rankings {
+  background: #001100;
+  border-radius: 0;
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+[data-theme="retro"] .aggregate-rankings h4 {
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .delete-icon {
+  border: 1px solid #ff0000;
+  color: #ff0000;
+}
+
+[data-theme="retro"] .delete-icon:hover {
+  background: #ff0000;
+  color: #0a0a0a;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+[data-theme="retro"] .aggregate-item {
+  background: #0a0a0a;
+  border-radius: 0;
+  border: 1px solid #00aa00;
+}
+
+[data-theme="retro"] .rank-position {
+  color: #ffff00;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .rank-model {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+[data-theme="retro"] .rank-score {
+  color: #00aa00;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .stage2 .tabs {
+  gap: 4px;
+}
+
+[data-theme="retro"] .stage2 .tab {
+  background: #0a0a0a;
+  border: 2px solid #00aa00;
+  color: #00aa00;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+}
+
+[data-theme="retro"] .stage2 .tab:hover {
+  background: #001100;
+  color: #00ff00;
+  border-color: #00ff00;
+}
+
+[data-theme="retro"] .stage2 .tab.active {
+  background: #003300;
+  color: #00ff00;
+  border-color: #00ff00;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+[data-theme="retro"] .stage2 .tab-content {
+  background: #001100;
+  border: 2px solid #00aa00;
+  border-radius: 0;
+}
+
+[data-theme="retro"] .ranking-model {
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .ranking-content {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .parsed-ranking {
+  border-top: 2px solid #00ff00;
+}
+
+[data-theme="retro"] .parsed-ranking strong {
+  color: #ffff00;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .parsed-ranking ol {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .parsed-ranking li {
+  font-family: 'Courier New', monospace;
+}
+
+[data-theme="retro"] .rank-count {
+  color: #00aa00;
+  font-family: 'Courier New', monospace;
 }

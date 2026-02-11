@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 import './Sidebar.css';
 
 export default function Sidebar({
@@ -9,6 +10,7 @@ export default function Sidebar({
   onDeleteConversation,
   onUpdateTitle,
 }) {
+  const { theme, toggleTheme } = useTheme();
   const [editingId, setEditingId] = useState(null);
   const [editValue, setEditValue] = useState('');
 
@@ -45,37 +47,71 @@ export default function Sidebar({
         <div className="sidebar-title">
           <svg className="sidebar-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
             {/* Center circle - main council hub */}
-            <circle cx="32" cy="32" r="8" fill="#e91e63" />
+            <circle cx="32" cy="32" r="8" fill={theme === 'retro' ? '#00ff00' : '#8b5cf6'} />
 
             {/* Outer circles - individual LLM models */}
-            <circle cx="32" cy="12" r="6" fill="#f06292" />
-            <circle cx="47" cy="22" r="6" fill="#f06292" />
-            <circle cx="47" cy="42" r="6" fill="#f06292" />
-            <circle cx="32" cy="52" r="6" fill="#f06292" />
-            <circle cx="17" cy="42" r="6" fill="#f06292" />
-            <circle cx="17" cy="22" r="6" fill="#f06292" />
+            <circle cx="32" cy="12" r="6" fill={theme === 'retro' ? '#00aa00' : '#a78bfa'} />
+            <circle cx="47" cy="22" r="6" fill={theme === 'retro' ? '#00aa00' : '#a78bfa'} />
+            <circle cx="47" cy="42" r="6" fill={theme === 'retro' ? '#00aa00' : '#a78bfa'} />
+            <circle cx="32" cy="52" r="6" fill={theme === 'retro' ? '#00aa00' : '#a78bfa'} />
+            <circle cx="17" cy="42" r="6" fill={theme === 'retro' ? '#00aa00' : '#a78bfa'} />
+            <circle cx="17" cy="22" r="6" fill={theme === 'retro' ? '#00aa00' : '#a78bfa'} />
 
             {/* Connection lines */}
-            <line x1="32" y1="20" x2="32" y2="24" stroke="#e91e63" strokeWidth="2" />
-            <line x1="41" y1="26" x2="38" y2="28" stroke="#e91e63" strokeWidth="2" />
-            <line x1="41" y1="38" x2="38" y2="36" stroke="#e91e63" strokeWidth="2" />
-            <line x1="32" y1="44" x2="32" y2="40" stroke="#e91e63" strokeWidth="2" />
-            <line x1="23" y1="38" x2="26" y2="36" stroke="#e91e63" strokeWidth="2" />
-            <line x1="23" y1="26" x2="26" y2="28" stroke="#e91e63" strokeWidth="2" />
+            <line x1="32" y1="20" x2="32" y2="24" stroke={theme === 'retro' ? '#00ff00' : '#8b5cf6'} strokeWidth="2" />
+            <line x1="41" y1="26" x2="38" y2="28" stroke={theme === 'retro' ? '#00ff00' : '#8b5cf6'} strokeWidth="2" />
+            <line x1="41" y1="38" x2="38" y2="36" stroke={theme === 'retro' ? '#00ff00' : '#8b5cf6'} strokeWidth="2" />
+            <line x1="32" y1="44" x2="32" y2="40" stroke={theme === 'retro' ? '#00ff00' : '#8b5cf6'} strokeWidth="2" />
+            <line x1="23" y1="38" x2="26" y2="36" stroke={theme === 'retro' ? '#00ff00' : '#8b5cf6'} strokeWidth="2" />
+            <line x1="23" y1="26" x2="26" y2="28" stroke={theme === 'retro' ? '#00ff00' : '#8b5cf6'} strokeWidth="2" />
 
             {/* Brain icons in circles */}
-            <path d="M32 9c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
-            <path d="M47 19c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
-            <path d="M47 39c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
-            <path d="M32 49c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
-            <path d="M17 39c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
-            <path d="M17 19c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
+            <path d="M32 9c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill={theme === 'retro' ? '#000' : '#fff'}/>
+            <path d="M47 19c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill={theme === 'retro' ? '#000' : '#fff'}/>
+            <path d="M47 39c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill={theme === 'retro' ? '#000' : '#fff'}/>
+            <path d="M32 49c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill={theme === 'retro' ? '#000' : '#fff'}/>
+            <path d="M17 39c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill={theme === 'retro' ? '#000' : '#fff'}/>
+            <path d="M17 19c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill={theme === 'retro' ? '#000' : '#fff'}/>
           </svg>
           <h1>LLM Baithak</h1>
         </div>
-        <button className="new-conversation-btn" onClick={onNewConversation}>
-          + New Conversation
-        </button>
+        <div className="sidebar-buttons">
+          <button className="new-conversation-btn" onClick={onNewConversation}>
+            + New Conversation
+          </button>
+          <button
+            className="theme-toggle-btn"
+            onClick={toggleTheme}
+            title={`Switch to ${theme === 'simple' ? 'Retro Terminal' : 'Simple'} theme`}
+            aria-label={`Switch to ${theme === 'simple' ? 'Retro Terminal' : 'Simple'} theme`}
+          >
+            {theme === 'simple' ? (
+              // Terminal/Computer icon for switching to retro
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+                <path d="M6 9l.5-2.5L8 9"/>
+                <path d="M10 9l.5-2.5L12 9"/>
+                <path d="M14 9l.5-2.5L16 9"/>
+                <path d="M18 9l.5-2.5L20 9"/>
+              </svg>
+            ) : (
+              // Sun/brightness icon for switching to simple
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       <div className="conversation-list">
