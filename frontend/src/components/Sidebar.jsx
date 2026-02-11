@@ -42,7 +42,37 @@ export default function Sidebar({
   return (
     <div className="sidebar">
       <div className="sidebar-header">
-        <h1>LLM Council</h1>
+        <div className="sidebar-title">
+          <svg className="sidebar-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Center circle - main council hub */}
+            <circle cx="32" cy="32" r="8" fill="#e91e63" />
+
+            {/* Outer circles - individual LLM models */}
+            <circle cx="32" cy="12" r="6" fill="#f06292" />
+            <circle cx="47" cy="22" r="6" fill="#f06292" />
+            <circle cx="47" cy="42" r="6" fill="#f06292" />
+            <circle cx="32" cy="52" r="6" fill="#f06292" />
+            <circle cx="17" cy="42" r="6" fill="#f06292" />
+            <circle cx="17" cy="22" r="6" fill="#f06292" />
+
+            {/* Connection lines */}
+            <line x1="32" y1="20" x2="32" y2="24" stroke="#e91e63" strokeWidth="2" />
+            <line x1="41" y1="26" x2="38" y2="28" stroke="#e91e63" strokeWidth="2" />
+            <line x1="41" y1="38" x2="38" y2="36" stroke="#e91e63" strokeWidth="2" />
+            <line x1="32" y1="44" x2="32" y2="40" stroke="#e91e63" strokeWidth="2" />
+            <line x1="23" y1="38" x2="26" y2="36" stroke="#e91e63" strokeWidth="2" />
+            <line x1="23" y1="26" x2="26" y2="28" stroke="#e91e63" strokeWidth="2" />
+
+            {/* Brain icons in circles */}
+            <path d="M32 9c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
+            <path d="M47 19c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
+            <path d="M47 39c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
+            <path d="M32 49c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
+            <path d="M17 39c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
+            <path d="M17 19c-0.5 0-1 0.5-1 1v1c0 0.5 0.5 1 1 1s1-0.5 1-1v-1c0-0.5-0.5-1-1-1z" fill="#fff"/>
+          </svg>
+          <h1>LLM Baithak</h1>
+        </div>
         <button className="new-conversation-btn" onClick={onNewConversation}>
           + New Conversation
         </button>

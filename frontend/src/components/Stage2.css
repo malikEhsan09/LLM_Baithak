@@ -21,11 +21,11 @@
 }
 
 .aggregate-rankings {
-  background: #f0f7ff;
+  background: #fce4ec;
   padding: 16px;
   border-radius: 8px;
   margin-bottom: 20px;
-  border: 2px solid #d0e7ff;
+  border: 2px solid #f8bbd0;
 }
 
 .aggregate-rankings-header {
@@ -37,7 +37,7 @@
 
 .aggregate-rankings h4 {
   margin: 0;
-  color: #2a7ae2;
+  color: #c2185b;
   font-size: 15px;
 }
 
@@ -82,11 +82,11 @@
   padding: 10px;
   background: #ffffff;
   border-radius: 6px;
-  border: 1px solid #d0e7ff;
+  border: 1px solid #f8bbd0;
 }
 
 .rank-position {
-  color: #2a7ae2;
+  color: #c2185b;
   font-weight: 700;
   font-size: 16px;
   min-width: 35px;
@@ -127,13 +127,13 @@
 .stage2 .tab:hover {
   background: #f0f0f0;
   color: #333;
-  border-color: #4a90e2;
+  border-color: #e91e63;
 }
 
 .stage2 .tab.active {
   background: #ffffff;
-  color: #4a90e2;
-  border-color: #4a90e2;
+  color: #e91e63;
+  border-color: #e91e63;
   border-bottom-color: #ffffff;
   font-weight: 600;
 }
@@ -166,7 +166,7 @@
 }
 
 .parsed-ranking strong {
-  color: #2a7ae2;
+  color: #c2185b;
   font-size: 13px;
 }
 

@@ -1,0 +1,147 @@
+.loading-logo {
+  display: inline-block;
+}
+
+/* Node pulse animation - each node pulses at different times */
+.node {
+  transform-origin: center;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.node-1 { animation-delay: 0s; }
+.node-2 { animation-delay: 0.25s; }
+.node-3 { animation-delay: 0.5s; }
+.node-4 { animation-delay: 0.75s; }
+.node-5 { animation-delay: 1s; }
+.node-6 { animation-delay: 1.25s; }
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+/* Connection flow animation - data flowing between nodes */
+.connection {
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: flow 1s linear infinite;
+}
+
+.conn-1 { animation-delay: 0s; }
+.conn-2 { animation-delay: 0.15s; }
+.conn-3 { animation-delay: 0.3s; }
+.conn-4 { animation-delay: 0.45s; }
+.conn-5 { animation-delay: 0.6s; }
+.conn-6 { animation-delay: 0.75s; }
+
+@keyframes flow {
+  0% {
+    stroke-dashoffset: 20;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Center hub breathing animation */
+.center-hub {
+  transform-origin: center;
+  animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+  }
+}
+
+/* Orbiting particles - showing active thinking */
+.particle {
+  transform-origin: center;
+  animation: orbit 2s linear infinite;
+}
+
+.particle-1 {
+  animation: orbit-1 2s linear infinite;
+}
+
+.particle-2 {
+  animation: orbit-2 2s linear infinite;
+  animation-delay: 0.67s;
+}
+
+.particle-3 {
+  animation: orbit-3 2s linear infinite;
+  animation-delay: 1.33s;
+}
+
+@keyframes orbit-1 {
+  0% {
+    transform: rotate(0deg) translateX(12px) rotate(0deg);
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotate(360deg) translateX(12px) rotate(-360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes orbit-2 {
+  0% {
+    transform: rotate(120deg) translateX(12px) rotate(-120deg);
+    opacity: 0.3;
+  }
+  33% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(480deg) translateX(12px) rotate(-480deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes orbit-3 {
+  0% {
+    transform: rotate(240deg) translateX(12px) rotate(-240deg);
+    opacity: 0.3;
+  }
+  33% {
+    opacity: 0.3;
+  }
+  66% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(600deg) translateX(12px) rotate(-600deg);
+    opacity: 1;
+  }
+}
+
+/* Optional: Add glow effect */
+.center-hub {
+  filter: drop-shadow(0 0 4px rgba(233, 30, 99, 0.5));
+}
+
+.node {
+  filter: drop-shadow(0 0 2px rgba(240, 98, 146, 0.4));
+}

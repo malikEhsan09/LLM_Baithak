@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import Stage1 from './Stage1';
 import Stage2 from './Stage2';
 import Stage3 from './Stage3';
+import LoadingLogo from './LoadingLogo';
 import './ChatInterface.css';
 
 export default function ChatInterface({
@@ -41,7 +42,7 @@ export default function ChatInterface({
     return (
       <div className="chat-interface">
         <div className="empty-state">
-          <h2>Welcome to LLM Council</h2>
+          <h2>Welcome to LLM Baithak</h2>
           <p>Create a new conversation to get started</p>
         </div>
       </div>
@@ -54,7 +55,7 @@ export default function ChatInterface({
         {conversation.messages.length === 0 ? (
           <div className="empty-state">
             <h2>Start a conversation</h2>
-            <p>Ask a question to consult the LLM Council</p>
+            <p>Ask a question to consult the LLM Baithak</p>
           </div>
         ) : (
           conversation.messages.map((msg, index) => (
@@ -70,12 +71,12 @@ export default function ChatInterface({
                 </div>
               ) : (
                 <div className="assistant-message">
-                  <div className="message-label">LLM Council</div>
+                  <div className="message-label">LLM Baithak</div>
 
                   {/* Stage 1 */}
                   {msg.loading?.stage1 && (
                     <div className="stage-loading">
-                      <div className="spinner"></div>
+                      <LoadingLogo size={32} />
                       <span>Running Stage 1: Collecting individual responses...</span>
                     </div>
                   )}
@@ -84,7 +85,7 @@ export default function ChatInterface({
                   {/* Stage 2 */}
                   {msg.loading?.stage2 && (
                     <div className="stage-loading">
-                      <div className="spinner"></div>
+                      <LoadingLogo size={32} />
                       <span>Running Stage 2: Peer rankings...</span>
                     </div>
                   )}
@@ -99,7 +100,7 @@ export default function ChatInterface({
                   {/* Stage 3 */}
                   {msg.loading?.stage3 && (
                     <div className="stage-loading">
-                      <div className="spinner"></div>
+                      <LoadingLogo size={32} />
                       <span>Running Stage 3: Final synthesis...</span>
                     </div>
                   )}
@@ -112,8 +113,8 @@ export default function ChatInterface({
 
         {isLoading && (
           <div className="loading-indicator">
-            <div className="spinner"></div>
-            <span>Consulting the council...</span>
+            <LoadingLogo size={48} />
+            <span>Consulting the baithak...</span>
           </div>
         )}
 
