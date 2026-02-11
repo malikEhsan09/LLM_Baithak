@@ -1,0 +1,392 @@
+.waitlist-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.waitlist-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Header */
+.waitlist-header {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: transparent;
+  border: 2px solid #00aa00;
+  color: #00aa00;
+  padding: 10px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.back-btn:hover {
+  border-color: #00ff00;
+  color: #00ff00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.5));
+}
+
+.header-logo h1 {
+  font-size: 24px;
+  color: #00ff00;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #00ff00;
+  margin: 0;
+}
+
+/* Content */
+.waitlist-content {
+  margin-bottom: 30px;
+}
+
+.waitlist-box {
+  padding: 40px;
+}
+
+.box-title {
+  font-size: 20px;
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #00ffff;
+  margin: 0 0 15px 0;
+  text-align: center;
+}
+
+.box-subtitle {
+  font-size: 14px;
+  color: #00aa00;
+  text-align: center;
+  margin: 0 0 30px 0;
+  line-height: 1.6;
+}
+
+/* Stats */
+.waitlist-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.waitlist-stats .stat {
+  text-align: center;
+  padding: 15px;
+  background: rgba(0, 255, 0, 0.05);
+  border: 1px solid #00aa00;
+}
+
+.waitlist-stats .stat-value {
+  display: block;
+  font-size: 20px;
+  color: #00ffff;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.waitlist-stats .stat-label {
+  display: block;
+  font-size: 10px;
+  color: #00aa00;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Form */
+.waitlist-form {
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.retro-input {
+  width: 100%;
+  background: #0a0a0a;
+  border: 2px solid #00aa00;
+  color: #00ff00;
+  padding: 12px 15px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.retro-input:focus {
+  border-color: #00ff00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.retro-input::placeholder {
+  color: #006600;
+}
+
+.retro-btn {
+  background: #0a0a0a;
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  padding: 15px 30px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.retro-btn:hover:not(:disabled) {
+  background: #00ff00;
+  color: #0a0a0a;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+
+.retro-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.retro-btn.primary {
+  width: 100%;
+}
+
+.retro-btn.secondary {
+  border-color: #00aa00;
+  color: #00aa00;
+}
+
+.retro-btn.secondary:hover {
+  border-color: #00ff00;
+  color: #00ff00;
+}
+
+.retro-btn.link {
+  background: transparent;
+  border: none;
+  padding: 5px 10px;
+  color: #00ffff;
+  font-size: 12px;
+}
+
+.retro-btn.link:hover {
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.submit-btn {
+  margin-top: 10px;
+}
+
+.loading-dots {
+  animation: loadingDots 1.5s infinite;
+}
+
+@keyframes loadingDots {
+  0%, 20% { content: 'PROCESSING'; }
+  40% { content: 'PROCESSING.'; }
+  60% { content: 'PROCESSING..'; }
+  80%, 100% { content: 'PROCESSING...'; }
+}
+
+.blink-cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Benefits */
+.waitlist-benefits {
+  padding: 20px;
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid #00aaaa;
+  margin-bottom: 20px;
+}
+
+.waitlist-benefits h3 {
+  font-size: 14px;
+  color: #00ffff;
+  margin: 0 0 15px 0;
+}
+
+.waitlist-benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.waitlist-benefits li {
+  font-size: 13px;
+  color: #00aa00;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.waitlist-benefits .bullet {
+  color: #00ff00;
+}
+
+/* Alt Actions */
+.alt-actions {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #00aa00;
+}
+
+.alt-actions p {
+  font-size: 13px;
+  color: #00aa00;
+  margin: 0 0 10px 0;
+}
+
+/* Footer */
+.waitlist-footer {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #00aa00;
+}
+
+.waitlist-footer p {
+  font-size: 11px;
+  color: #006600;
+  margin: 0;
+}
+
+/* Success Box */
+.success-box {
+  padding: 40px;
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 64px;
+  color: #00ff00;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px #00ff00;
+  animation: successPulse 2s infinite;
+}
+
+@keyframes successPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.success-title {
+  font-size: 24px;
+  color: #00ffff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0 0 20px 0;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.success-message {
+  font-size: 14px;
+  color: #00aa00;
+  margin: 0 0 10px 0;
+  line-height: 1.6;
+}
+
+.success-message .highlight {
+  color: #00ffff;
+  font-weight: bold;
+}
+
+.success-position {
+  margin: 30px 0;
+  padding: 20px;
+  background: rgba(0, 255, 0, 0.1);
+  border: 2px solid #00ff00;
+}
+
+.position-label {
+  display: block;
+  font-size: 12px;
+  color: #00aa00;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.position-number {
+  display: block;
+  font-size: 36px;
+  color: #00ffff;
+  font-weight: bold;
+  text-shadow: 0 0 15px #00ffff;
+}
+
+.success-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.success-actions .retro-btn {
+  flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .waitlist-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .back-btn {
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  .waitlist-box {
+    padding: 25px;
+  }
+
+  .success-actions {
+    flex-direction: column;
+  }
+}

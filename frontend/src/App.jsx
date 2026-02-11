@@ -3,12 +3,16 @@ import Sidebar from './components/Sidebar';
 import ChatInterface from './components/ChatInterface';
 import ConfirmationDialog from './components/ConfirmationDialog';
 import LandingPage from './components/LandingPage';
+import WaitlistPage from './components/WaitlistPage';
+import SignupPage from './components/SignupPage';
+import LoginPage from './components/LoginPage';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { api } from './api';
 import './App.css';
 
 function AppContent() {
-  const [showLanding, setShowLanding] = useState(true);
+  // Page state: 'landing', 'waitlist', 'signup', 'login', 'dashboard'
+  const [currentPage, setCurrentPage] = useState('landing');
   const [conversations, setConversations] = useState([]);
   const [currentConversationId, setCurrentConversationId] = useState(null);
   const [currentConversation, setCurrentConversation] = useState(null);
@@ -16,23 +20,39 @@ function AppContent() {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [conversationToDelete, setConversationToDelete] = useState(null);
 
-  const handleGetStarted = async () => {
-    // If user clicks Get Started, enter the main app
-    setShowLanding(false);
-    // Load conversations when entering the app
+  // Navigation handlers
+  const handleGetStarted = () => {
+    setCurrentPage('waitlist');
+  };
+
+  const handleShowSignup = () => {
+    setCurrentPage('signup');
+  };
+
+  const handleShowLogin = () => {
+    setCurrentPage('login');
+  };
+
+  const handleBackToLanding = () => {
+    setCurrentPage('landing');
+  };
+
+  const handleLoginSuccess = async () => {
+    setCurrentPage('dashboard');
+    // Load conversations when entering dashboard
     await loadConversations();
     // Create a new conversation if none exists
     if (conversations.length === 0) {
-      await handleNewConversation();
+      setTimeout(() => handleNewConversation(), 100);
     }
   };
 
-  // Load conversations on mount (only when not on landing page)
+  // Load conversations when on dashboard
   useEffect(() => {
-    if (!showLanding) {
+    if (currentPage === 'dashboard') {
       loadConversations();
     }
-  }, [showLanding]);
+  }, [currentPage]);
 
   // Load conversation details when selected
   useEffect(() => {
@@ -77,7 +97,7 @@ function AppContent() {
   };
 
   const handleDeleteConversation = (id, e) => {
-    e.stopPropagation(); // Prevent triggering conversation selection
+    e.stopPropagation();
     setConversationToDelete(id);
     setDeleteDialogOpen(true);
   };
@@ -87,16 +107,11 @@ function AppContent() {
 
     try {
       await api.deleteConversation(conversationToDelete);
-
-      // Remove from conversations list
       setConversations(conversations.filter(conv => conv.id !== conversationToDelete));
-
-      // If deleted conversation was current, clear it
       if (currentConversationId === conversationToDelete) {
         setCurrentConversationId(null);
         setCurrentConversation(null);
       }
-
       setDeleteDialogOpen(false);
       setConversationToDelete(null);
     } catch (error) {
@@ -115,13 +130,11 @@ function AppContent() {
   const handleUpdateTitle = async (conversationId, newTitle) => {
     try {
       await api.updateConversationTitle(conversationId, newTitle);
-      // Update the conversations list with the new title
       setConversations(conversations.map(conv =>
         conv.id === conversationId
           ? { ...conv, title: newTitle }
           : conv
       ));
-      // Update current conversation if it's the one being edited
       if (currentConversation && currentConversation.id === conversationId) {
         setCurrentConversation({ ...currentConversation, title: newTitle });
       }
@@ -136,14 +149,12 @@ function AppContent() {
 
     setIsLoading(true);
     try {
-      // Optimistically add user message to UI
       const userMessage = { role: 'user', content };
       setCurrentConversation((prev) => ({
         ...prev,
         messages: [...prev.messages, userMessage],
       }));
 
-      // Create a partial assistant message that will be updated progressively
       const assistantMessage = {
         role: 'assistant',
         stage1: null,
@@ -157,13 +168,11 @@ function AppContent() {
         },
       };
 
-      // Add the partial assistant message
       setCurrentConversation((prev) => ({
         ...prev,
         messages: [...prev.messages, assistantMessage],
       }));
 
-      // Send message with streaming
       await api.sendMessageStream(currentConversationId, content, (eventType, event) => {
         switch (eventType) {
           case 'stage1_start':
@@ -225,12 +234,10 @@ function AppContent() {
             break;
 
           case 'title_complete':
-            // Reload conversations to get updated title
             loadConversations();
             break;
 
           case 'complete':
-            // Stream complete, reload conversations list
             loadConversations();
             setIsLoading(false);
             break;
@@ -246,7 +253,6 @@ function AppContent() {
       });
     } catch (error) {
       console.error('Failed to send message:', error);
-      // Remove optimistic messages on error
       setCurrentConversation((prev) => ({
         ...prev,
         messages: prev.messages.slice(0, -2),
@@ -255,11 +261,39 @@ function AppContent() {
     }
   };
 
-  return (
-    <>
-      {showLanding ? (
-        <LandingPage onGetStarted={handleGetStarted} />
-      ) : (
+  // Render based on current page
+  switch (currentPage) {
+    case 'landing':
+      return <LandingPage onGetStarted={handleGetStarted} />;
+
+    case 'waitlist':
+      return (
+        <WaitlistPage
+          onBack={handleBackToLanding}
+          onSignup={handleShowSignup}
+          onLogin={handleShowLogin}
+        />
+      );
+
+    case 'signup':
+      return (
+        <SignupPage
+          onBack={handleBackToLanding}
+          onLogin={handleShowLogin}
+        />
+      );
+
+    case 'login':
+      return (
+        <LoginPage
+          onBack={handleBackToLanding}
+          onSignup={handleShowSignup}
+          onLoginSuccess={handleLoginSuccess}
+        />
+      );
+
+    case 'dashboard':
+      return (
         <div className="app">
           <Sidebar
             conversations={conversations}
@@ -284,9 +318,11 @@ function AppContent() {
             cancelText="Cancel"
           />
         </div>
-      )}
-    </>
-  );
+      );
+
+    default:
+      return <LandingPage onGetStarted={handleGetStarted} />;
+  }
 }
 
 function App() {
