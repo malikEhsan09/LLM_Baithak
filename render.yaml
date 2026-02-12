@@ -1,2 +1,39 @@
-# Web Process
-web: python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+services:
+  # Web Service (FastAPI Backend)
+  - type: web
+    name: llm-baithak-backend
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+
+    # Health check
+    healthCheckPath: /
+
+    # Environment variables (also set these in Render dashboard)
+    envVars:
+      - key: PORT
+        value: 8001
+      - key: PYTHON_VERSION
+        value: 3.11
+
+    # Disk storage for conversations
+    disk:
+      name: data
+      mountPath: /app/data
+      sizeGB: 1
+
+# Alternative: Non-Docker deployment (simpler for free tier)
+# Uncomment below if Docker deployment fails
+# services:
+#   - type: pserv
+#     name: llm-baithak-backend
+#     runtime: python
+#     plan: free
+#     buildCommand: pip install -r requirements.txt
+#     startCommand: python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+#     envVars:
+#       - key: PORT
+#         value: 8001
