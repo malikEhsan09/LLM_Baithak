@@ -3,7 +3,8 @@
  */
 
 // Use environment variable for production, localhost for development
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8001';
+// Remove trailing slash if present to avoid double slashes
+const API_BASE = (import.meta.env.VITE_API_URL || 'http://localhost:8001').replace(/\/$/, '');
 
 export const api = {
   /**
