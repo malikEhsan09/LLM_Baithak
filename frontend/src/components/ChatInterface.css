@@ -177,6 +177,9 @@
   transition: background 0.2s;
   white-space: nowrap;
   align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .send-button:hover:not(:disabled) {
@@ -306,6 +309,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 0;
+  gap: 8px;
 }
 
 [data-theme="retro"] .send-button:hover:not(:disabled) {
