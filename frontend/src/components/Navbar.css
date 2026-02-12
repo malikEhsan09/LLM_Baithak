@@ -7,6 +7,15 @@
   border-bottom: 3px solid #00ff00;
   z-index: 1000;
   box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.retro-navbar.visible {
+  transform: translateY(0);
+}
+
+.retro-navbar.hidden {
+  transform: translateY(-100%);
 }
 
 .navbar-container {

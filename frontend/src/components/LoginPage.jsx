@@ -140,7 +140,7 @@ export default function LoginPage({ onBack, onSignup, onLoginSuccess }) {
             </form>
 
             {/* Demo Credentials Info */}
-            <div className="demo-credentials">
+            {/* <div className="demo-credentials">
               <h3>&gt; DEMO_CREDENTIALS:</h3>
               <div className="credential-item">
                 <span className="credential-label">EMAIL:</span>
@@ -150,7 +150,7 @@ export default function LoginPage({ onBack, onSignup, onLoginSuccess }) {
                 <span className="credential-label">PASSWORD:</span>
                 <span className="credential-value">admin.llm</span>
               </div>
-            </div>
+            </div> */}
 
             {/* Divider */}
             <div className="divider">

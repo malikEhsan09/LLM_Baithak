@@ -1,8 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Navbar.css';
 
 export default function Navbar({ activeSection, onNavClick, onGetStarted }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Handle scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Hide navbar when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past 100px
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Clean up
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
 
   const navItems = [
     { id: 'home', label: 'HOME' },
@@ -13,7 +41,7 @@ export default function Navbar({ activeSection, onNavClick, onGetStarted }) {
   ];
 
   return (
-    <nav className="retro-navbar">
+    <nav className={`retro-navbar ${isVisible ? 'visible' : 'hidden'}`}>
       <div className="navbar-container">
         {/* Logo */}
         <div className="navbar-logo">

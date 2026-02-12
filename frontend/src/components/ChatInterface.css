@@ -5,6 +5,33 @@
   height: 100vh;
   background: #ffffff;
   color: #333;
+  position: relative;
+}
+
+/* Mobile sidebar toggle */
+.mobile-sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1001;
+  background: #8b5cf6;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+  transition: all 0.2s;
+  color: #fff;
+}
+
+.mobile-sidebar-toggle:hover {
+  background: #7c3aed;
+  transform: scale(1.05);
+}
+
+.mobile-sidebar-toggle:active {
+  transform: scale(0.95);
 }
 
 .messages-container {
@@ -295,4 +322,33 @@
   background: #0a0a0a;
   border-color: #333300;
   color: #333300;
+}
+
+/* Mobile sidebar toggle - Retro theme */
+[data-theme="retro"] .mobile-sidebar-toggle {
+  background: #0a0a0a;
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+[data-theme="retro"] .mobile-sidebar-toggle:hover {
+  background: #00ff00;
+  color: #0a0a0a;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .mobile-sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .messages-container {
+    padding: 16px;
+    padding-top: 60px;
+  }
+}
 }

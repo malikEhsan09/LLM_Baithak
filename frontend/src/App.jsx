@@ -19,6 +19,7 @@ function AppContent() {
   const [isLoading, setIsLoading] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [conversationToDelete, setConversationToDelete] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Navigation handlers
   const handleGetStarted = () => {
@@ -302,11 +303,14 @@ function AppContent() {
             onNewConversation={handleNewConversation}
             onDeleteConversation={handleDeleteConversation}
             onUpdateTitle={handleUpdateTitle}
+            isOpen={sidebarOpen}
+            onClose={() => setSidebarOpen(false)}
           />
           <ChatInterface
             conversation={currentConversation}
             onSendMessage={handleSendMessage}
             isLoading={isLoading}
+            onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
           />
           <ConfirmationDialog
             isOpen={deleteDialogOpen}
