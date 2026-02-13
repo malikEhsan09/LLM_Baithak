@@ -150,4 +150,32 @@ export const api = {
     }
     return response.json();
   },
+
+  /**
+   * Join the waitlist.
+   */
+  async joinWaitlist(name, email) {
+    const response = await fetch(`${API_BASE}/api/waitlist`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email }),
+    });
+    if (!response.ok) {
+      throw new Error('Failed to join waitlist');
+    }
+    return response.json();
+  },
+
+  /**
+   * Get waitlist count.
+   */
+  async getWaitlistCount() {
+    const response = await fetch(`${API_BASE}/api/waitlist/count`);
+    if (!response.ok) {
+      throw new Error('Failed to get waitlist count');
+    }
+    return response.json();
+  },
 };

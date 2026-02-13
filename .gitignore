@@ -11,6 +11,10 @@ wheels/
 
 # Keys and secrets
 .env
+# Google service account credentials
+llm-baithak.json
+*credentials.json
+*service-account.json
 
 # Data files
 data/

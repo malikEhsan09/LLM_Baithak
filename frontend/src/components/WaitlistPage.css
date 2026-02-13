@@ -218,6 +218,36 @@
   margin-top: 10px;
 }
 
+/* Error message */
+.error-message {
+  background: rgba(255, 0, 0, 0.1);
+  border: 2px solid #ff0000;
+  padding: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: shake 0.5s;
+}
+
+.error-icon {
+  font-size: 24px;
+  color: #ff0000;
+  text-shadow: 0 0 10px #ff0000;
+}
+
+.error-text {
+  flex: 1;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
 .loading-dots {
   animation: loadingDots 1.5s infinite;
 }

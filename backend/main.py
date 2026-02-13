@@ -4,13 +4,14 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import uuid
 import json
 import asyncio
 
 from . import storage
 from .council import run_full_council, generate_conversation_title, stage1_collect_responses, stage2_collect_rankings, stage3_synthesize_final, calculate_aggregate_rankings
+from . import waitlist
 
 app = FastAPI(title="LLM Council API")
 
@@ -42,6 +43,19 @@ class SendMessageRequest(BaseModel):
 class UpdateTitleRequest(BaseModel):
     """Request to update conversation title."""
     title: str
+
+
+class WaitlistRequest(BaseModel):
+    """Request to join waitlist."""
+    name: str
+    email: str
+
+
+class WaitlistResponse(BaseModel):
+    """Response from waitlist signup."""
+    success: bool
+    position: Optional[int] = None
+    message: str
 
 
 class ConversationMetadata(BaseModel):
@@ -97,6 +111,43 @@ async def delete_conversation(conversation_id: str):
         raise HTTPException(status_code=404, detail="Conversation not found")
     storage.delete_conversation(conversation_id)
     return {"status": "deleted", "id": conversation_id}
+
+
+@app.post("/api/waitlist", response_model=WaitlistResponse)
+async def join_waitlist(request: WaitlistRequest):
+    """
+    Add user to the waitlist.
+
+    Stores user information in Google Sheets.
+    """
+    # Basic email validation
+    if "@" not in request.email:
+        return WaitlistResponse(
+            success=False,
+            message="Please enter a valid email address"
+        )
+
+    # Add to waitlist
+    result = await waitlist.add_to_waitlist(request.name, request.email)
+
+    if result.get("success"):
+        return WaitlistResponse(
+            success=True,
+            position=result.get("position"),
+            message=result.get("message", "Successfully added to waitlist!")
+        )
+    else:
+        return WaitlistResponse(
+            success=False,
+            message=result.get("message", "Failed to join waitlist")
+        )
+
+
+@app.get("/api/waitlist/count")
+async def get_waitlist_count():
+    """Get current number of people on waitlist."""
+    result = await waitlist.get_waitlist_count()
+    return result
 
 
 @app.put("/api/conversations/{conversation_id}/title")

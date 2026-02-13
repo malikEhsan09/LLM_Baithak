@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { api } from '../api';
 import './WaitlistPage.css';
 
 export default function WaitlistPage({ onBack, onSignup, onLogin }) {
@@ -6,18 +7,30 @@ export default function WaitlistPage({ onBack, onSignup, onLogin }) {
   const [name, setName] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [position, setPosition] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !name) return;
 
     setIsLoading(true);
+    setError(null);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const result = await api.joinWaitlist(name, email);
 
-    setSubmitted(true);
-    setIsLoading(false);
+      if (result.success) {
+        setSubmitted(true);
+        setPosition(result.position);
+      } else {
+        setError(result.message || 'Failed to join waitlist');
+      }
+    } catch (err) {
+      setError(err.message || 'Failed to connect to server. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (submitted) {
@@ -35,7 +48,7 @@ export default function WaitlistPage({ onBack, onSignup, onLogin }) {
             </p>
             <div className="success-position">
               <span className="position-label">YOUR POSITION:</span>
-              <span className="position-number">#{Math.floor(Math.random() * 1000) + 1}</span>
+              <span className="position-number">#{position}</span>
             </div>
             <div className="success-actions">
               <button className="retro-btn secondary" onClick={onBack}>
@@ -105,6 +118,14 @@ export default function WaitlistPage({ onBack, onSignup, onLogin }) {
 
             {/* Form */}
             <form className="waitlist-form" onSubmit={handleSubmit}>
+              {/* Error message */}
+              {error && (
+                <div className="error-message retro-box">
+                  <span className="error-icon">✕</span>
+                  <span className="error-text">{error}</span>
+                </div>
+              )}
+
               <div className="form-group">
                 <label htmlFor="name">YOUR_NAME:</label>
                 <input
