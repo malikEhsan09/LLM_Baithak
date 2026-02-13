@@ -22,7 +22,8 @@ app.add_middleware(
         "http://localhost:5173",
         "http://localhost:3000",
         "https://llm-baithak.vercel.app",
-        "https://llm-baithak.app",  # Add custom domain if you have one
+        "https://llmbaithak.com",
+        "https://www.llmbaithak.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
